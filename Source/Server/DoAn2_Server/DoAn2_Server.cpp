@@ -391,6 +391,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 			sockClients[i].Receive((char*)&k,sizeof(k),0);
 			if(k == 1)
 			{
+DangKi:
 				sockClients[j].Listen(5);
 				// ---------------------------------------
 				// my code
@@ -409,17 +410,15 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 				if(SaveUser(User,Pass) == 0)
 				{
 					x = 0;
-					cout<<"   Dang ki khong thanh cong"<<endl<<"  Tai khoan da duoc dang ki"<<endl;
-				
+					cout<<"   Dang ki khong thanh cong. Tai khoan da duoc dang ki"<<endl;				
 					sockClients[j].Send((char*)&x,sizeof(int),0);
-					goto EXIT;
+					goto DangKi;
 				}
 				else
 				{
 					x = 1;
-					k = 2;
-					
-					cout<<"   Dang ki thanh cong"<<endl;
+					k = 2;				
+					cout << "   Dang ki thanh cong" << endl;
 					sockClients[j].Send((char*)&x,sizeof(int),0);
 					goto DangNhap;
 				}

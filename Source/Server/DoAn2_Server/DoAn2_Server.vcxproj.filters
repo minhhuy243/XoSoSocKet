@@ -22,6 +22,12 @@
     <Text Include="MienBac.txt" />
     <Text Include="PhuYen.txt" />
     <Text Include="LongAn.txt" />
+    <Text Include="BinhDuong.txt" />
+    <Text Include="BinhThuan.txt" />
+    <Text Include="DanhSach.txt" />
+    <Text Include="NinhThuan.txt" />
+    <Text Include="DongNai.txt" />
+    <Text Include="VungTau.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -34,6 +40,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DoAn2_Server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tokenizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -77,21 +77,21 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 			//------------------------------------------
 			// sẽ có bảng menu để client chọn
 MENU:
-			cout<<"         MENU\n"<<endl<<"1. Tao tai khoan"<<endl;
+			cout<<"         MENU\n"<<endl<<"1.Tao tai khoan"<<endl;
 			cout<<"2.Dang Nhap"<<endl<<"3.Exit"<<endl;
 			int choose;
 			cout<<"Choose: ";
 			cin>>choose;
 			client.Send((char*)&choose,sizeof(choose),0);
 			if(choose == 1)
-				goto TaoTK;
+				goto DangKi;
 			else if(choose == 2)
 				goto DangNhap;
 				else
 					goto Exit;
 			// gởi cho server biết client thực hiện thao tác gì
 // k = 1
-TaoTK:
+DangKi:
 			cout<<"         Dang ki tai khoan"<<endl;
 			UserName = new char[50];
 			Password = new char[50];
@@ -102,7 +102,7 @@ TaoTK:
 			if(!CheckEmail(UserName))
 			{
 				cout<<"User bat buoc la 1 dia chi gmail"<<endl;
-				goto TaoTK;
+				goto DangKi;
 			}
 			client.Send(&lenUser,sizeof(int),0);
 			client.Send(_strrev(UserName),lenUser,0);
@@ -115,9 +115,15 @@ TaoTK:
 			// a là x bên server
 			int a;
 			client.Receive((char*)&a,sizeof(a),0);
-			if(a == 0)
-				goto Exit;
-
+			if (a == 0)
+			{
+				cout << "Tai khoan da ton tai. Hay dang ki tai khoan khac" << endl;
+				goto DangKi;
+			}
+			else
+			{
+				goto DangNhap;
+			}
 
 // k = 2
 DangNhap:
